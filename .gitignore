@@ -1,0 +1,59 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+node_modules/
+.env
+.streamlit/secrets.toml
+artifacts/
+
+# MLflow local experiment tracking
+ml/reports/model_registry/mlruns/
+ml/reports/model_registry/mlflow.db
+ml/reports/model_registry/mlflow.db-shm
+ml/reports/model_registry/mlflow.db-wal
+
+# Additional local MLflow state
+mlruns/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Python tooling
+.mypy_cache/
+.ruff_cache/
+
+# Temporary files and backups
+*.bak
+*.backup
+*.tmp
+*.log
+
+# Playwright output
+playwright-report/
+test-results/
+blob-report/
+
+# Row-level evaluation data and derived customer records
+ml/reports/error_analysis_customer_level_v1.csv
+ml/reports/nested_cv_oof_predictions_v1.csv
+ml/reports/shap/holdout_transformed_features_v1.csv
+ml/reports/shap/holdout_shap_values_v1.npy
+
+# Row-level evaluation data and customer-level explanations
+ml/reports/error_analysis/holdout_error_analysis_v1.csv
+ml/reports/split_manifest.json
+ml/reports/archive_pre_evaluation_correction_20261027_040302/split_manifest.json
+ml/reports/shap/local_explanations_v1.json
+
+# Dataset pending source and redistribution-license verification
+ml/data/WA_Fn-UseC_-Telco-Customer-Churn.csv
+
+# Private internal build specifications
+/ChurnGuard_Master_JSON_Prompt.json
+/MASTER-WEB-DEV-WORKFLOW.md

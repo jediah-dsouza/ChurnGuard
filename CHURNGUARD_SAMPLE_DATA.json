@@ -1,0 +1,288 @@
+{
+  "schemaVersion": "1.0.0",
+  "datasetName": "ChurnGuard Deterministic Frontend Demo Fixtures",
+  "purpose": "Frontend development and verification only. These fixtures are not training data and must not be presented as real model evaluation results.",
+  "isDemoData": true,
+  "targetSchema": {
+    "target": "Churn",
+    "positiveClass": "Yes",
+    "negativeClass": "No",
+    "expectedPositiveClassRange": "approximately 25-30% for the eventual real dataset"
+  },
+  "fixtures": [
+    {
+      "fixtureId": "CUST-LOW-001",
+      "scenario": "low_risk",
+      "description": "Stable customer with long tenure and a two-year contract.",
+      "customer": {
+        "customerID": "CUST-LOW-001",
+        "gender": "Male",
+        "SeniorCitizen": 0,
+        "Partner": "Yes",
+        "Dependents": "Yes",
+        "tenure": 48,
+        "PhoneService": "Yes",
+        "MultipleLines": "Yes",
+        "InternetService": "DSL",
+        "OnlineSecurity": "Yes",
+        "OnlineBackup": "Yes",
+        "DeviceProtection": "Yes",
+        "TechSupport": "Yes",
+        "StreamingTV": "No",
+        "StreamingMovies": "No",
+        "Contract": "Two year",
+        "PaperlessBilling": "No",
+        "PaymentMethod": "Bank transfer (automatic)",
+        "MonthlyCharges": 68.75,
+        "TotalCharges": 3300.0
+      },
+      "expectedDemoPrediction": {
+        "predictionId": "PRED-DEMO-LOW-001",
+        "riskProbability": 0.11,
+        "riskLabel": "Low",
+        "threshold": 0.5,
+        "topDrivers": [
+          {
+            "feature": "Two-year contract",
+            "direction": "decreases_risk",
+            "impact": -0.42,
+            "explanation": "A long-term contract is associated with stronger retention in this demo scenario."
+          },
+          {
+            "feature": "48-month tenure",
+            "direction": "decreases_risk",
+            "impact": -0.31,
+            "explanation": "The customer has remained subscribed for several years."
+          },
+          {
+            "feature": "Automatic bank transfer",
+            "direction": "decreases_risk",
+            "impact": -0.16,
+            "explanation": "Automatic payment reduces billing friction in this demo scenario."
+          }
+        ],
+        "recommendation": {
+          "priority": "low",
+          "summary": "No urgent retention intervention is indicated.",
+          "actions": [
+            "Continue normal customer-success coverage.",
+            "Monitor for meaningful changes in services or billing."
+          ]
+        }
+      }
+    },
+    {
+      "fixtureId": "CUST-HIGH-001",
+      "scenario": "high_risk",
+      "description": "Short-tenure customer on a month-to-month contract with high recurring charges.",
+      "customer": {
+        "customerID": "CUST-HIGH-001",
+        "gender": "Female",
+        "SeniorCitizen": 0,
+        "Partner": "No",
+        "Dependents": "No",
+        "tenure": 4,
+        "PhoneService": "Yes",
+        "MultipleLines": "No",
+        "InternetService": "Fiber optic",
+        "OnlineSecurity": "No",
+        "OnlineBackup": "No",
+        "DeviceProtection": "No",
+        "TechSupport": "No",
+        "StreamingTV": "Yes",
+        "StreamingMovies": "Yes",
+        "Contract": "Month-to-month",
+        "PaperlessBilling": "Yes",
+        "PaymentMethod": "Electronic check",
+        "MonthlyCharges": 89.1,
+        "TotalCharges": 356.4
+      },
+      "expectedDemoPrediction": {
+        "predictionId": "PRED-DEMO-HIGH-001",
+        "riskProbability": 0.87,
+        "riskLabel": "High",
+        "threshold": 0.5,
+        "topDrivers": [
+          {
+            "feature": "Month-to-month contract",
+            "direction": "increases_risk",
+            "impact": 0.44,
+            "explanation": "The customer is not committed to a longer-term contract."
+          },
+          {
+            "feature": "Short tenure",
+            "direction": "increases_risk",
+            "impact": 0.36,
+            "explanation": "The customer has only been subscribed for 4 months."
+          },
+          {
+            "feature": "High monthly charges",
+            "direction": "increases_risk",
+            "impact": 0.25,
+            "explanation": "The recurring monthly charge is relatively high in this demo scenario."
+          }
+        ],
+        "recommendation": {
+          "priority": "high",
+          "summary": "Prioritize this customer for retention outreach.",
+          "actions": [
+            "Review whether the current plan provides sufficient value.",
+            "Consider a targeted retention offer.",
+            "Ask about service or billing dissatisfaction."
+          ]
+        }
+      }
+    },
+    {
+      "fixtureId": "CUST-BORDERLINE-001",
+      "scenario": "borderline",
+      "description": "Mixed signals produce a prediction close to the decision threshold.",
+      "customer": {
+        "customerID": "CUST-BORDERLINE-001",
+        "gender": "Male",
+        "SeniorCitizen": 0,
+        "Partner": "Yes",
+        "Dependents": "No",
+        "tenure": 14,
+        "PhoneService": "Yes",
+        "MultipleLines": "No",
+        "InternetService": "Fiber optic",
+        "OnlineSecurity": "No",
+        "OnlineBackup": "Yes",
+        "DeviceProtection": "Yes",
+        "TechSupport": "No",
+        "StreamingTV": "No",
+        "StreamingMovies": "Yes",
+        "Contract": "Month-to-month",
+        "PaperlessBilling": "Yes",
+        "PaymentMethod": "Mailed check",
+        "MonthlyCharges": 74.8,
+        "TotalCharges": 1047.2
+      },
+      "expectedDemoPrediction": {
+        "predictionId": "PRED-DEMO-BORDERLINE-001",
+        "riskProbability": 0.52,
+        "riskLabel": "Medium",
+        "threshold": 0.5,
+        "topDrivers": [
+          {
+            "feature": "Month-to-month contract",
+            "direction": "increases_risk",
+            "impact": 0.28,
+            "explanation": "The contract structure leaves the customer relatively easy to lose."
+          },
+          {
+            "feature": "14-month tenure",
+            "direction": "increases_risk",
+            "impact": 0.13,
+            "explanation": "The customer is beyond the earliest stage but has not reached long tenure."
+          },
+          {
+            "feature": "Device protection",
+            "direction": "decreases_risk",
+            "impact": -0.1,
+            "explanation": "The additional service relationship may support retention in this demo scenario."
+          }
+        ],
+        "recommendation": {
+          "priority": "medium",
+          "summary": "Review the customer before escalating to a high-priority retention queue.",
+          "actions": [
+            "Check recent service or billing interactions.",
+            "Consider proactive value-focused outreach.",
+            "Monitor for additional risk signals."
+          ]
+        }
+      }
+    },
+    {
+      "fixtureId": "CUST-HARD-001",
+      "scenario": "hard_case",
+      "description": "Conflicting signals create an ambiguous case intended to exercise explanation and uncertainty UX.",
+      "customer": {
+        "customerID": "CUST-HARD-001",
+        "gender": "Female",
+        "SeniorCitizen": 1,
+        "Partner": "Yes",
+        "Dependents": "No",
+        "tenure": 36,
+        "PhoneService": "Yes",
+        "MultipleLines": "Yes",
+        "InternetService": "Fiber optic",
+        "OnlineSecurity": "No",
+        "OnlineBackup": "Yes",
+        "DeviceProtection": "No",
+        "TechSupport": "Yes",
+        "StreamingTV": "Yes",
+        "StreamingMovies": "No",
+        "Contract": "One year",
+        "PaperlessBilling": "Yes",
+        "PaymentMethod": "Electronic check",
+        "MonthlyCharges": 92.3,
+        "TotalCharges": 3322.8
+      },
+      "expectedDemoPrediction": {
+        "predictionId": "PRED-DEMO-HARD-001",
+        "riskProbability": 0.61,
+        "riskLabel": "High",
+        "threshold": 0.5,
+        "topDrivers": [
+          {
+            "feature": "High monthly charges",
+            "direction": "increases_risk",
+            "impact": 0.3,
+            "explanation": "The recurring charge is relatively high and may create value sensitivity."
+          },
+          {
+            "feature": "Electronic check payment",
+            "direction": "increases_risk",
+            "impact": 0.17,
+            "explanation": "This billing pattern is treated as a higher-risk signal in this demo fixture."
+          },
+          {
+            "feature": "One-year contract",
+            "direction": "decreases_risk",
+            "impact": -0.19,
+            "explanation": "A one-year commitment provides some retention protection."
+          }
+        ],
+        "recommendation": {
+          "priority": "high",
+          "summary": "Treat as a review-worthy case rather than an automatic churn conclusion.",
+          "actions": [
+            "Review recent customer interactions.",
+            "Validate whether pricing or service value is a concern.",
+            "Use the driver explanations to guide outreach."
+          ]
+        }
+      }
+    }
+  ],
+  "uiTestScenarios": [
+    {
+      "scenarioId": "INVALID-MISSING-001",
+      "purpose": "Required-field validation",
+      "inputMutation": "Remove customerID and tenure",
+      "expected": "Inline validation errors; no prediction request."
+    },
+    {
+      "scenarioId": "INVALID-RANGE-001",
+      "purpose": "Numeric validation",
+      "inputMutation": "Set tenure to -1",
+      "expected": "Inline numeric validation error; no prediction request."
+    },
+    {
+      "scenarioId": "SERVICE-ERROR-001",
+      "purpose": "Prediction service failure",
+      "inputMutation": "Force mock service failure",
+      "expected": "Clear error state with retry action."
+    },
+    {
+      "scenarioId": "SERVICE-RETRY-001",
+      "purpose": "Recovery",
+      "inputMutation": "Retry after forced failure",
+      "expected": "Successful deterministic prediction."
+    }
+  ],
+  "importantNote": "The expectedDemoPrediction values are UI fixtures only. They are not trained-model outputs, statistical findings, calibrated probabilities, SHAP values, or evidence of model performance."
+}

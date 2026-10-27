@@ -1,0 +1,17 @@
+streamlit==1.50.0
+pydantic==2.13.5
+pytest==8.4.2
+
+# Model serving and experiment tracking
+mlflow==3.16.1
+xgboost==3.4.1
+scikit-learn==1.9.1
+
+# Data processing and explainability
+numpy==2.5.3
+pandas==2.3.3
+scipy==1.18.1
+shap==0.52.0
+joblib==1.6.0
+matplotlib==3.11.2
+skops==0.16.0

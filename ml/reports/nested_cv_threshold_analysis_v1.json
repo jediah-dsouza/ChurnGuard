@@ -1,0 +1,41 @@
+{
+  "created_at_utc": "2026-10-27T00:13:10.541434+00:00",
+  "dataset": "WA_Fn-UseC_-Telco-Customer-Churn.csv",
+  "rows": 7043,
+  "features": 19,
+  "positive_label": "Yes",
+  "positive_class_rate": 0.2653698707936959,
+  "method": "Outer stratified CV with inner model selection and separate calibration split",
+  "outer_folds": 5,
+  "inner_folds": 5,
+  "randomized_configurations_per_model_per_outer_fold": 10,
+  "calibration_size_fraction_of_outer_training_data": 0.2,
+  "primary_inner_selection_metric": "average_precision",
+  "threshold_selection": "Threshold selected on a stratified calibration subset excluded from model tuning and fitting; maximize F1 subject to recall >= 0.80 where feasible, with higher threshold as tie-break.",
+  "outer_test_used_for_model_or_threshold_selection": false,
+  "outer_fold_selected_models": [
+    "xgboost",
+    "xgboost",
+    "xgboost",
+    "xgboost",
+    "xgboost"
+  ],
+  "mean_outer_test_metrics": {
+    "test_accuracy": 0.7346295527130783,
+    "test_precision": 0.5000212647702963,
+    "test_recall": 0.8352123983885535,
+    "test_f1": 0.6254396221094376,
+    "test_roc_auc": 0.8476214963584272,
+    "test_average_precision": 0.6675204941504052
+  },
+  "std_outer_test_metrics": {
+    "test_accuracy": 0.015672098254289283,
+    "test_precision": 0.01794452955955166,
+    "test_recall": 0.03742868536672492,
+    "test_f1": 0.023039658815731653,
+    "test_roc_auc": 0.018108351271321488,
+    "test_average_precision": 0.04197429410483942
+  },
+  "interpretation_warning": "Cross-validation estimates only. The historical holdout has already influenced earlier model and threshold choices. This is not a new untouched holdout evaluation. Each fold fits on fewer rows because a separate calibration subset is reserved for threshold selection.",
+  "elapsed_seconds": 863.59
+}

@@ -1,0 +1,1 @@
+"""ChurnGuard frontend package."""

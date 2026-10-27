@@ -1,0 +1,183 @@
+{
+  "experiment": {
+    "name": "churnguard_candidate_model_training",
+    "version": "v1",
+    "created_at_utc": "2026-10-06T17:22:38.336130+00:00",
+    "random_state": 42,
+    "primary_tuning_metric": "average_precision",
+    "cv_folds": 5,
+    "randomized_search_iterations": 10
+  },
+  "dataset": {
+    "path": "C:\\Users\\Jediah\\Downloads\\ChurnGuard-Frontend\\ChurnGuard\\ml\\data\\WA_Fn-UseC_-Telco-Customer-Churn.csv",
+    "rows": 7043,
+    "target_column": "Churn",
+    "identifier_column": "customerID",
+    "positive_class": "Yes",
+    "negative_class": "No"
+  },
+  "split": {
+    "training_rows": 5634,
+    "holdout_rows": 1409,
+    "training_churn_rate": 0.2653532126375577,
+    "holdout_churn_rate": 0.2654364797728886,
+    "holdout_locked": true,
+    "split_manifest": "C:\\Users\\Jediah\\Downloads\\ChurnGuard-Frontend\\ChurnGuard\\ml\\reports\\split_manifest.json"
+  },
+  "features": {
+    "count": 19,
+    "columns": [
+      "gender",
+      "SeniorCitizen",
+      "Partner",
+      "Dependents",
+      "tenure",
+      "PhoneService",
+      "MultipleLines",
+      "InternetService",
+      "OnlineSecurity",
+      "OnlineBackup",
+      "DeviceProtection",
+      "TechSupport",
+      "StreamingTV",
+      "StreamingMovies",
+      "Contract",
+      "PaperlessBilling",
+      "PaymentMethod",
+      "MonthlyCharges",
+      "TotalCharges"
+    ],
+    "numeric": [
+      "tenure",
+      "MonthlyCharges",
+      "TotalCharges"
+    ],
+    "categorical": [
+      "gender",
+      "SeniorCitizen",
+      "Partner",
+      "Dependents",
+      "PhoneService",
+      "MultipleLines",
+      "InternetService",
+      "OnlineSecurity",
+      "OnlineBackup",
+      "DeviceProtection",
+      "TechSupport",
+      "StreamingTV",
+      "StreamingMovies",
+      "Contract",
+      "PaperlessBilling",
+      "PaymentMethod"
+    ],
+    "identifier_excluded": true,
+    "target_excluded": true
+  },
+  "models": [
+    {
+      "model": "majority_baseline",
+      "tuning_metric": null,
+      "cv_best_score": null,
+      "holdout_accuracy": 0.7345635202271115,
+      "holdout_precision": 0.0,
+      "holdout_recall": 0.0,
+      "holdout_f1": 0.0,
+      "holdout_roc_auc": null,
+      "holdout_pr_auc": null,
+      "majority_class": "No"
+    },
+    {
+      "model": "logistic_regression",
+      "tuning_metric": "average_precision",
+      "cv_best_score": 0.6599681789072245,
+      "holdout_accuracy": 0.7374024130589071,
+      "holdout_precision": 0.5034364261168385,
+      "holdout_recall": 0.7834224598930482,
+      "holdout_f1": 0.6129707112970711,
+      "holdout_roc_auc": 0.8416001446691985,
+      "holdout_pr_auc": 0.6338160682153531,
+      "default_probability_threshold": 0.5,
+      "best_params": {
+        "model__C": 0.5908361216819946,
+        "model__penalty": "l2"
+      },
+      "search_iterations": 10,
+      "cv_folds": 5,
+      "training_seconds": 9.999
+    },
+    {
+      "model": "random_forest",
+      "tuning_metric": "average_precision",
+      "cv_best_score": 0.662708907069252,
+      "holdout_accuracy": 0.751596877217885,
+      "holdout_precision": 0.5210526315789473,
+      "holdout_recall": 0.7941176470588235,
+      "holdout_f1": 0.6292372881355932,
+      "holdout_roc_auc": 0.8434175514738175,
+      "holdout_pr_auc": 0.6521512547424025,
+      "default_probability_threshold": 0.5,
+      "best_params": {
+        "model__class_weight": "balanced",
+        "model__max_depth": 8,
+        "model__max_features": "sqrt",
+        "model__min_samples_leaf": 8,
+        "model__min_samples_split": 8,
+        "model__n_estimators": 321
+      },
+      "search_iterations": 10,
+      "cv_folds": 5,
+      "training_seconds": 37.287
+    },
+    {
+      "model": "xgboost",
+      "tuning_metric": "average_precision",
+      "cv_best_score": 0.6700639946093335,
+      "holdout_accuracy": 0.7565649396735273,
+      "holdout_precision": 0.5283363802559415,
+      "holdout_recall": 0.7727272727272727,
+      "holdout_f1": 0.6275787187839305,
+      "holdout_roc_auc": 0.848482265106306,
+      "holdout_pr_auc": 0.6617462938129999,
+      "default_probability_threshold": 0.5,
+      "best_params": {
+        "model__colsample_bytree": 0.9051525088143455,
+        "model__gamma": 0.38563517334297287,
+        "model__learning_rate": 0.033328037312136266,
+        "model__max_depth": 3,
+        "model__min_child_weight": 9,
+        "model__n_estimators": 177,
+        "model__reg_alpha": 0.8631034258755935,
+        "model__reg_lambda": 2.3698943804826738,
+        "model__scale_pos_weight": 2.327245062131623,
+        "model__subsample": 0.6722454226001083
+      },
+      "search_iterations": 10,
+      "cv_folds": 5,
+      "training_seconds": 14.521
+    }
+  ],
+  "candidate_ranking_by_cv_pr_auc": [
+    {
+      "rank": 1,
+      "model": "xgboost",
+      "cv_pr_auc": 0.6700639946093335
+    },
+    {
+      "rank": 2,
+      "model": "random_forest",
+      "cv_pr_auc": 0.662708907069252
+    },
+    {
+      "rank": 3,
+      "model": "logistic_regression",
+      "cv_pr_auc": 0.6599681789072245
+    }
+  ],
+  "recommended_candidate_for_next_stage": "xgboost",
+  "model_artifacts": {
+    "logistic_regression": "C:\\Users\\Jediah\\Downloads\\ChurnGuard-Frontend\\ChurnGuard\\ml\\models\\logistic_regression_tuned_cv_v1.joblib",
+    "random_forest": "C:\\Users\\Jediah\\Downloads\\ChurnGuard-Frontend\\ChurnGuard\\ml\\models\\random_forest_tuned_cv_v1.joblib",
+    "xgboost": "C:\\Users\\Jediah\\Downloads\\ChurnGuard-Frontend\\ChurnGuard\\ml\\models\\xgboost_tuned_cv_v1.joblib"
+  },
+  "important_evaluation_note": "Holdout metrics are descriptive only at this stage. The holdout must not be used for hyperparameter tuning, feature selection, model selection, or business threshold optimization. The next stage will perform formal untouched holdout evaluation and business threshold analysis."
+}

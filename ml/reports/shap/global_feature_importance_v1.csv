@@ -1,0 +1,47 @@
+rank,feature,mean_abs_shap
+1,categorical__Contract_Month-to-month,0.6421145
+2,numeric__tenure,0.4191253
+3,categorical__OnlineSecurity_No,0.25503013
+4,categorical__InternetService_Fiber optic,0.22632948
+5,numeric__MonthlyCharges,0.21152058
+6,categorical__PaymentMethod_Electronic check,0.17552567
+7,categorical__TechSupport_No,0.15581976
+8,categorical__Contract_Two year,0.13260123
+9,numeric__TotalCharges,0.116695926
+10,categorical__PaperlessBilling_No,0.11071964
+11,categorical__MultipleLines_No,0.100286156
+12,categorical__StreamingMovies_Yes,0.06215117
+13,categorical__OnlineBackup_No,0.05642158
+14,categorical__Contract_One year,0.04765024
+15,categorical__StreamingTV_Yes,0.046905003
+16,categorical__SeniorCitizen_0,0.038097266
+17,categorical__Dependents_No,0.037484307
+18,categorical__InternetService_DSL,0.019199071
+19,categorical__gender_Female,0.017639747
+20,categorical__InternetService_No,0.013636447
+21,categorical__PhoneService_No,0.0112633845
+22,categorical__PaymentMethod_Mailed check,0.011180706
+23,categorical__StreamingMovies_No,0.009392412
+24,categorical__StreamingTV_No,0.007159339
+25,categorical__PaperlessBilling_Yes,0.00609731
+26,categorical__OnlineBackup_Yes,0.0049049426
+27,categorical__PaymentMethod_Bank transfer (automatic),0.0046101813
+28,categorical__PaymentMethod_Credit card (automatic),0.003658706
+29,categorical__Partner_No,0.0036539007
+30,categorical__TechSupport_Yes,0.0033957274
+31,categorical__DeviceProtection_No,0.0017846612
+32,categorical__OnlineSecurity_Yes,0.0014122172
+33,categorical__DeviceProtection_Yes,0.0014015713
+34,categorical__Dependents_Yes,0.0013706201
+35,categorical__gender_Male,0.0013006614
+36,categorical__MultipleLines_Yes,0.0009444036
+37,categorical__PhoneService_Yes,0.0007608411
+38,categorical__Partner_Yes,0.0
+39,categorical__SeniorCitizen_1,0.0
+40,categorical__TechSupport_No internet service,0.0
+41,categorical__OnlineBackup_No internet service,0.0
+42,categorical__OnlineSecurity_No internet service,0.0
+43,categorical__MultipleLines_No phone service,0.0
+44,categorical__DeviceProtection_No internet service,0.0
+45,categorical__StreamingMovies_No internet service,0.0
+46,categorical__StreamingTV_No internet service,0.0

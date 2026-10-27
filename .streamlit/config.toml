@@ -1,0 +1,12 @@
+[server]
+baseUrlPath = "app"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "light"
+primaryColor = "#A55F16"
+backgroundColor = "#F4F5F2"
+secondaryBackgroundColor = "#EAEEE9"
+textColor = "#122028"

@@ -1,0 +1,38 @@
+{
+  "created_at_utc": "2026-10-26T23:08:36.475789+00:00",
+  "dataset": "WA_Fn-UseC_-Telco-Customer-Churn.csv",
+  "rows": 7043,
+  "features": 19,
+  "positive_label": "Yes",
+  "positive_class_rate": 0.2653698707936959,
+  "method": "Nested stratified cross-validation",
+  "outer_folds": 3,
+  "inner_folds": 3,
+  "randomized_configurations_per_model_per_outer_fold": 2,
+  "primary_inner_selection_metric": "average_precision",
+  "threshold_selection": "Training-fold out-of-fold probabilities; maximize F1 among thresholds meeting recall >= 0.80, with higher threshold as tie-break",
+  "outer_test_fold_used_for_model_or_threshold_selection": false,
+  "outer_fold_selected_models": [
+    "random_forest",
+    "random_forest",
+    "logistic_regression"
+  ],
+  "mean_outer_test_metrics": {
+    "test_accuracy": 0.749539083203829,
+    "test_precision": 0.5186514879104754,
+    "test_recall": 0.7945425361155697,
+    "test_f1": 0.6273014563183628,
+    "test_roc_auc": 0.8451690880627574,
+    "test_average_precision": 0.6518871960935106
+  },
+  "std_outer_test_metrics": {
+    "test_accuracy": 0.006608914807210615,
+    "test_precision": 0.008908589931638946,
+    "test_recall": 0.031576750518308175,
+    "test_f1": 0.004330026231373949,
+    "test_roc_auc": 0.00679205567449674,
+    "test_average_precision": 0.009791294355052847
+  },
+  "interpretation_warning": "Initial smoke-test configuration, not the final full evaluation. These are nested-CV estimates, not results from a newly untouched holdout. The historical holdout has already influenced earlier model/threshold choices.",
+  "elapsed_seconds": 87.77
+}

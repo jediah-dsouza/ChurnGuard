@@ -1,0 +1,113 @@
+{
+  "project": "ChurnGuard",
+  "stage": "data_preparation",
+  "status": "validated",
+  "dataset": {
+    "path": "C:\\Users\\Jediah\\Downloads\\ChurnGuard-Frontend\\ChurnGuard\\ml\\data\\WA_Fn-UseC_-Telco-Customer-Churn.csv",
+    "rows": 7043,
+    "columns": 21,
+    "column_names": [
+      "customerID",
+      "gender",
+      "SeniorCitizen",
+      "Partner",
+      "Dependents",
+      "tenure",
+      "PhoneService",
+      "MultipleLines",
+      "InternetService",
+      "OnlineSecurity",
+      "OnlineBackup",
+      "DeviceProtection",
+      "TechSupport",
+      "StreamingTV",
+      "StreamingMovies",
+      "Contract",
+      "PaperlessBilling",
+      "PaymentMethod",
+      "MonthlyCharges",
+      "TotalCharges",
+      "Churn"
+    ]
+  },
+  "target": {
+    "column": "Churn",
+    "allowed_values": [
+      "No",
+      "Yes"
+    ],
+    "observed_values": [
+      "No",
+      "Yes"
+    ],
+    "class_counts": {
+      "No": 5174,
+      "Yes": 1869
+    },
+    "overall_churn_rate": 0.2653698707936959
+  },
+  "identifier": {
+    "column": "customerID",
+    "duplicate_count": 0,
+    "missing_count": 0,
+    "excluded_from_model_features": true
+  },
+  "leakage_checks": {
+    "forbidden_columns": [
+      "churn_risk_score",
+      "post_outcome_churn_flag"
+    ],
+    "forbidden_columns_present": [],
+    "passed": true
+  },
+  "data_quality": {
+    "total_charges_missing_after_numeric_conversion": 11,
+    "total_charges_imputation_stage": "modeling_pipeline_after_split",
+    "target_missing": 0,
+    "customer_id_missing": 0
+  },
+  "features": {
+    "count": 19,
+    "columns": [
+      "gender",
+      "SeniorCitizen",
+      "Partner",
+      "Dependents",
+      "tenure",
+      "PhoneService",
+      "MultipleLines",
+      "InternetService",
+      "OnlineSecurity",
+      "OnlineBackup",
+      "DeviceProtection",
+      "TechSupport",
+      "StreamingTV",
+      "StreamingMovies",
+      "Contract",
+      "PaperlessBilling",
+      "PaymentMethod",
+      "MonthlyCharges",
+      "TotalCharges"
+    ],
+    "customer_id_excluded": true,
+    "target_excluded": true
+  },
+  "split": {
+    "method": "train_test_split",
+    "test_size": 0.2,
+    "random_state": 42,
+    "stratified": true,
+    "train_rows": 5634,
+    "holdout_rows": 1409,
+    "train_churn_rate": 0.2653532126375577,
+    "holdout_churn_rate": 0.2654364797728886
+  },
+  "baseline": {
+    "type": "majority_class",
+    "majority_class": "No",
+    "holdout_accuracy": 0.7345635202271115,
+    "holdout_churn_recall": 0.0,
+    "holdout_actual_churn_count": 374,
+    "holdout_predicted_churn_count": 0
+  }
+}

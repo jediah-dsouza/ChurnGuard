@@ -1,0 +1,48 @@
+{
+  "model_id": "churnguard-xgboost-v1",
+  "model_family": "XGBoost",
+  "source_artifact": "ml\\models\\xgboost_tuned_cv_v1.joblib",
+  "created_at_utc": "2026-10-26T15:17:24.634170+00:00",
+  "business_threshold": 0.45,
+  "threshold_note": "Applied by the decision layer, not embedded in the probability estimator.",
+  "pipeline_steps": [
+    "preprocess",
+    "model"
+  ],
+  "artifacts": {
+    "joblib": {
+      "path": "ml\\models\\churnguard-xgboost-v1.joblib",
+      "sha256": "7c1a1df5c52e9d8b285866fe32db63275be611997cbeeb0fcef0fbd76cc08d12",
+      "bytes": 220576
+    },
+    "skops": {
+      "path": "ml\\models\\churnguard-xgboost-v1.skops",
+      "sha256": "2b6e9bbe23a415aa575e674070f57da0993fc00ce039a086aed35e57a12f1028",
+      "bytes": 487742
+    }
+  },
+  "source_artifact_sha256": "39e52f14efb853c75620ee109abdc0a6e0fd2bd2369781101d6acaf21f1fe283",
+  "reports": {
+    "training": "ml\\reports\\candidate_model_training_report.json",
+    "evaluation": "ml\\reports\\formal_holdout_evaluation_v1.json"
+  },
+  "runtime": {
+    "python": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "scikit_learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "joblib": "1.6.0",
+    "skops": "0.16.0"
+  },
+  "verification": {
+    "pipeline_steps_match": true,
+    "joblib_round_trip": true,
+    "skops_round_trip": true,
+    "prediction_parity": true
+  },
+  "limitations": [
+    "This manifest records artifact identity and serialization checks.",
+    "It does not establish independent reproducibility of training.",
+    "It does not register the model in MLflow."
+  ]
+}

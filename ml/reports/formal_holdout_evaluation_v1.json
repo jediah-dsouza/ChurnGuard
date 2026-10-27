@@ -1,0 +1,180 @@
+{
+  "experiment": {
+    "name": "ChurnGuard Formal Holdout Evaluation",
+    "version": "v1",
+    "random_state": 42,
+    "holdout_size": 0.2,
+    "target": "Churn",
+    "positive_class": "Yes / 1",
+    "primary_selection_metric": "PR-AUC",
+    "business_priority": "Recall-weighted churn detection"
+  },
+  "data_integrity": {
+    "dataset_rows": 7043,
+    "training_rows": 5634,
+    "holdout_rows": 1409,
+    "holdout_locked": true,
+    "holdout_used_for_tuning": false,
+    "holdout_used_for_feature_selection": false,
+    "holdout_used_for_retraining": false,
+    "train_holdout_churn_rate": {
+      "training": 0.2653532126375577,
+      "holdout": 0.2654364797728886
+    }
+  },
+  "candidate_models": {
+    "logistic_regression": {
+      "holdout_metrics_at_0_50": {
+        "accuracy": 0.7374024130589071,
+        "precision": 0.5034364261168385,
+        "recall": 0.7834224598930482,
+        "f1": 0.6129707112970711,
+        "roc_auc": 0.8416001446691985,
+        "pr_auc": 0.6338160682153531
+      },
+      "confusion_matrix": [
+        [
+          746,
+          289
+        ],
+        [
+          81,
+          293
+        ]
+      ]
+    },
+    "random_forest": {
+      "holdout_metrics_at_0_50": {
+        "accuracy": 0.751596877217885,
+        "precision": 0.5210526315789473,
+        "recall": 0.7941176470588235,
+        "f1": 0.6292372881355932,
+        "roc_auc": 0.8434175514738175,
+        "pr_auc": 0.6521512547424025
+      },
+      "confusion_matrix": [
+        [
+          762,
+          273
+        ],
+        [
+          77,
+          297
+        ]
+      ]
+    },
+    "xgboost": {
+      "holdout_metrics_at_0_50": {
+        "accuracy": 0.7565649396735273,
+        "precision": 0.5283363802559415,
+        "recall": 0.7727272727272727,
+        "f1": 0.6275787187839305,
+        "roc_auc": 0.848482265106306,
+        "pr_auc": 0.6617462938129999
+      },
+      "confusion_matrix": [
+        [
+          777,
+          258
+        ],
+        [
+          85,
+          289
+        ]
+      ]
+    }
+  },
+  "model_selection": {
+    "selected_model": "xgboost",
+    "selection_metric": "PR-AUC",
+    "selection_reason": "Highest formal holdout PR-AUC among the tuned candidate models.",
+    "candidate_ranking": [
+      {
+        "model": "xgboost",
+        "threshold": 0.5,
+        "accuracy": 0.7565649396735273,
+        "precision": 0.5283363802559415,
+        "recall": 0.7727272727272727,
+        "f1": 0.6275787187839305,
+        "roc_auc": 0.848482265106306,
+        "pr_auc": 0.6617462938129999
+      },
+      {
+        "model": "random_forest",
+        "threshold": 0.5,
+        "accuracy": 0.751596877217885,
+        "precision": 0.5210526315789473,
+        "recall": 0.7941176470588235,
+        "f1": 0.6292372881355932,
+        "roc_auc": 0.8434175514738175,
+        "pr_auc": 0.6521512547424025
+      },
+      {
+        "model": "logistic_regression",
+        "threshold": 0.5,
+        "accuracy": 0.7374024130589071,
+        "precision": 0.5034364261168385,
+        "recall": 0.7834224598930482,
+        "f1": 0.6129707112970711,
+        "roc_auc": 0.8416001446691985,
+        "pr_auc": 0.6338160682153531
+      }
+    ]
+  },
+  "calibration": {
+    "artifact": "ml\\reports\\calibration_curves_v1.png",
+    "note": "Calibration curves are descriptive holdout diagnostics. No post-hoc calibration model was fitted in this stage."
+  },
+  "business_threshold": {
+    "selected_model": "xgboost",
+    "selected_threshold": 0.45,
+    "selection": {
+      "recall_floor": 0.8,
+      "selection_reason": "Selected the highest threshold among thresholds meeting the 0.80 recall floor and maximizing F1, favoring fewer unnecessary retention interventions when the performance trade-off is tied.",
+      "selected_metrics": {
+        "threshold": 0.45,
+        "accuracy": 0.7452093683463449,
+        "precision": 0.5127334465195246,
+        "recall": 0.8074866310160428,
+        "f1": 0.6272066458982347,
+        "predicted_positive_rate": 0.41802696948190204
+      },
+      "confusion_counts": {
+        "true_negatives": 748,
+        "false_positives": 287,
+        "false_negatives": 72,
+        "true_positives": 302
+      }
+    },
+    "final_metrics": {
+      "accuracy": 0.7452093683463449,
+      "precision": 0.5127334465195246,
+      "recall": 0.8074866310160428,
+      "f1": 0.6272066458982347,
+      "roc_auc": 0.848482265106306,
+      "pr_auc": 0.6617462938129999,
+      "confusion_matrix": [
+        [
+          748,
+          287
+        ],
+        [
+          72,
+          302
+        ]
+      ]
+    },
+    "artifacts": {
+      "threshold_table": "ml\\reports\\business_threshold_analysis_v1.csv",
+      "threshold_plot": "ml\\reports\\threshold_tradeoff_v1.png"
+    }
+  },
+  "artifacts": {
+    "model_metrics": "ml\\reports\\formal_holdout_model_metrics_v1.csv",
+    "calibration_plot": "ml\\reports\\calibration_curves_v1.png",
+    "confusion_matrix_directory": "ml\\reports\\confusion_matrices"
+  },
+  "stage_status": "PASS",
+  "next_stage": "Error analysis by customer segment + SHAP global/local explanation analysis.",
+  "runtime_seconds": 5.65
+}

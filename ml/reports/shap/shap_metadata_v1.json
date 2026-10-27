@@ -1,0 +1,16 @@
+{
+  "model": "xgboost_tuned_cv_v1",
+  "model_path": "C:\\Users\\Jediah\\Downloads\\ChurnGuard-Frontend\\ChurnGuard\\ml\\models\\xgboost_tuned_cv_v1.joblib",
+  "holdout_rows": 1409,
+  "transformed_feature_count": 46,
+  "threshold": 0.45,
+  "local_explanation_count": 3,
+  "local_holdout_indices": [
+    1090,
+    476,
+    455
+  ],
+  "explainer": "TreeExplainer",
+  "causal_claim": false,
+  "interpretation_note": "SHAP values describe model contributions to the trained XGBoost prediction. They are not causal effects."
+}
